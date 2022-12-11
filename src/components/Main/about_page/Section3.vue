@@ -1,5 +1,5 @@
 <template>
-    <div id="section3" class="main-content">
+    <div class="main-content">
         <div class="content">
             <div class="content-items">
                 <h1>Test We Offer</h1>
@@ -95,7 +95,7 @@
 
 <style scoped>
 .main-content {
-    padding: 50px 70px 100px 70px;
+    padding: 0px 5%;
 }
 
 .main-content .content {

@@ -24,7 +24,12 @@
         <br />
         <br />
         <div class="content-cards">
-            <v-card class="card" v-for="(item, index) in classes" :key="index">
+            <v-card
+                hover
+                class="card"
+                v-for="(item, index) in classes"
+                :key="index"
+            >
                 <div class="card-image">
                     <img :src="item.image" alt="card image" />
                 </div>
@@ -37,19 +42,22 @@
                 </v-card-subtitle>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn
-                        right
-                        color="primary"
-                        width="80"
-                        @click="
-                            $router.push({
-                                name: 'StudentClassSelected',
-                                params: { class_name: item.title },
-                            })
-                        "
-                    >
-                        View
-                    </v-btn>
+                    <v-hover v-slot="{ hover }">
+                        <v-btn
+                            :outlined="hover ? false : true"
+                            :color="hover ? 'primary' : '#A3A3A3'"
+                            right
+                            width="80"
+                            @click="
+                                $router.push({
+                                    name: 'StudentClassSelected',
+                                    params: { class_name: item.title },
+                                })
+                            "
+                        >
+                            View
+                        </v-btn>
+                    </v-hover>
                 </v-card-actions>
             </v-card>
         </div>

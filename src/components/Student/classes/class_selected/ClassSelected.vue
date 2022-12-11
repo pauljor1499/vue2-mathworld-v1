@@ -2,10 +2,15 @@
     <div class="class-selected-content">
         <div class="content-header">
             <div class="header-item">
-                <span class="item-title"> Algebra </span>
-                <span class="item-subtitle">
-                    Regular Class - TTH (9:00am-10:00am)
-                </span>
+                <div class="class-title">
+                    <span class="item-title"> {{ get_class.title }}</span>
+                    <span class="item-subtitle"> MWC-XYZ-1 </span>
+                </div>
+                <div class="class-sched">
+                    <span class="class-sched-item">
+                        Regular Class - TTH (9:00am-10:00am)
+                    </span>
+                </div>
             </div>
         </div>
         <br />
@@ -38,12 +43,17 @@
 </template>
 
 <script>
+import { AllClassesService } from "@/api/Student/classes/Service";
 import Assignments from "./assignments/Assignments.vue";
 import ClassRoster from "./class_roster/ClassRoster.vue";
 import Grades from "./grades/Grades.vue";
 import ClassDetails from "./class_details/ClassDetails.vue";
 
 export default {
+    props: {
+        class_name: String,
+    },
+
     components: {
         Assignments,
         ClassRoster,
@@ -56,6 +66,12 @@ export default {
             tab: 0,
             items: ["Assignments", "Class Roster", "Grades", "Class Details"],
         };
+    },
+
+    computed: {
+        get_class() {
+            return AllClassesService.prototype.get_class(this.class_name);
+        },
     },
 };
 </script>
@@ -77,13 +93,37 @@ export default {
 }
 
 .header-item {
+    width: 100%;
+    display: flex;
+}
+
+.class-title,
+.class-sched {
+    width: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.item-title {
-    font-size: 1.5em;
+.class-title {
+    text-align: left;
+    line-height: 1;
+    row-gap: 10px;
+}
+
+.class-sched {
+    text-align: right;
+}
+
+.class-sched-item {
+    font-size: 1.2rem;
     color: var(--white-1);
+}
+
+.item-title {
+    font-size: 1.5rem;
+    color: var(--white-1);
+    flex-wrap: wrap;
 }
 
 .item-subtitle {

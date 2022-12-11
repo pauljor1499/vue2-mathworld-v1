@@ -1,9 +1,10 @@
 <template>
     <div class="class-details-content">
         <div class="content-title">
-            <h1>Multi-step Equations and Inequalities</h1>
             <span> Algebra </span>
+            <h1>Multi-step Equations and Inequalities</h1>
         </div>
+        <br />
         <br />
         <v-divider />
         <div class="content-details">

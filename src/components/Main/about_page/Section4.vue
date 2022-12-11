@@ -22,7 +22,7 @@
 }
 
 .content {
-    padding: 50px 0px 50px 0px;
+    padding: 50px 0px;
     width: 50%;
     margin: auto;
     display: flex;
