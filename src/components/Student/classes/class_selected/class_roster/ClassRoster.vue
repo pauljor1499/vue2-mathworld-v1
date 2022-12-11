@@ -27,7 +27,13 @@
 </template>
 
 <script>
+import { AllClassesService } from "@/api/Student/classes/Service";
+
 export default {
+    props: {
+        class_name: String,
+    },
+
     data: () => ({
         people: [
             {
@@ -70,6 +76,15 @@ export default {
                 name: "Francisco Daniel",
             },
         ],
+        computed: {
+            get_class() {
+                return AllClassesService.prototype.get_class(this.class_name);
+            },
+        },
+
+        created() {
+            console.log(this.class_name);
+        },
     }),
 };
 </script>

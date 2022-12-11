@@ -4,7 +4,7 @@
             <div class="header-item">
                 <div class="class-title">
                     <span class="item-title"> {{ get_class.title }}</span>
-                    <span class="item-subtitle"> MWC-XYZ-1 </span>
+                    <span class="item-subtitle"> {{ get_class.code }} </span>
                 </div>
                 <div class="class-sched">
                     <span class="class-sched-item">
@@ -26,10 +26,10 @@
             <br />
             <v-tabs-items v-model="tab">
                 <v-tab-item>
-                    <Assignments />
+                    <Assignments :class_name="this.class_name" />
                 </v-tab-item>
                 <v-tab-item>
-                    <ClassRoster />
+                    <ClassRoster :class_name="'sadsasda'" />
                 </v-tab-item>
                 <v-tab-item>
                     <Grades />
