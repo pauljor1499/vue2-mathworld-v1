@@ -8,7 +8,7 @@
         </div>
         <br />
         <br />
-        <v-list v-for="(item, index) in people" :key="index" three-line>
+        <v-list v-for="(item, index) in people" :key="index" dense>
             <v-list-item :key="index">
                 <v-list-item-avatar>
                     <v-img :src="item.photo" />
@@ -21,7 +21,7 @@
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-divider v-if="index < people.length - 1" />
+            <v-divider class="mt-3" v-if="index < people.length - 1" />
         </v-list>
     </div>
 </template>

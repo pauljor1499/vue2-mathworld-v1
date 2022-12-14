@@ -29,7 +29,7 @@
                     <Assignments :class_name="this.class_name" />
                 </v-tab-item>
                 <v-tab-item>
-                    <ClassRoster :class_name="'sadsasda'" />
+                    <ClassRoster />
                 </v-tab-item>
                 <v-tab-item>
                     <Grades />
@@ -121,7 +121,7 @@ export default {
 }
 
 .item-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: var(--white-1);
     flex-wrap: wrap;
 }

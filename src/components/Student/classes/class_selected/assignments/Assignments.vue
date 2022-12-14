@@ -13,7 +13,7 @@
             <v-card
                 class="card"
                 hover
-                v-for="(item, index) in get_class.assignments"
+                v-for="(item, index) in filter_results"
                 :key="index"
             >
                 <v-card-text class="card-content">
@@ -79,77 +79,29 @@ export default {
     data() {
         return {
             filter: ["All", "New", "Done", "Closed", "Unsubmitted"],
-
             filter_text: "All",
-
-            // all_classes: [
-            //     {
-            //         status: "New",
-            //         title: "Implicit Differentiation (Level 1)",
-            //         description: "Assignment 1",
-            //         due: "Due: November 04, 2022 8:00 pm",
-            //     },
-
-            //     {
-            //         status: "New",
-            //         title: "Implicit Differentiation (Level 1)",
-            //         description: "Assignment 1",
-            //         due: "Due: November 04, 2022 8:00 pm",
-            //     },
-
-            //     {
-            //         status: "Done",
-            //         title: "Implicit Differentiation (Level 1)",
-            //         description: "Assignment 1",
-            //         due: "Due: November 04, 2022 8:00 pm",
-            //     },
-
-            //     {
-            //         status: "Done",
-            //         title: "Implicit Differentiation (Level 1)",
-            //         description: "Assignment 1",
-            //         due: "Due: November 04, 2022 8:00 pm",
-            //     },
-
-            //     {
-            //         status: "Done",
-            //         title: "Implicit Differentiation (Level 1)",
-            //         description: "Assignment 1",
-            //         due: "Due: November 04, 2022 8:00 pm",
-            //     },
-
-            //     {
-            //         status: "Closed",
-            //         title: "Implicit Differentiation (Level 1)",
-            //         description: "Assignment 1",
-            //         due: "Due: November 04, 2022 8:00 pm",
-            //     },
-
-            //     {
-            //         status: "Unsubmitted",
-            //         title: "Implicit Differentiation (Level 1)",
-            //         description: "Assignment 1",
-            //         due: "Due: November 04, 2022 8:00 pm",
-            //     },
-            // ],
         };
     },
 
     computed: {
         filter_results() {
             var arr = [];
-            for (var index in this.all_classes) {
-                if (this.all_classes[index].status === this.filter_text) {
-                    arr.push(this.all_classes[index]);
+            for (var index in this.assignments()) {
+                if (this.assignments()[index].status === this.filter_text) {
+                    arr.push(this.assignments()[index]);
                 }
             }
             if (this.filter_text === "All") {
-                return this.all_classes;
+                return this.assignments();
             }
             return arr;
         },
-        get_class() {
-            return AllClassesService.prototype.get_class(this.class_name);
+    },
+
+    methods: {
+        assignments() {
+            return AllClassesService.prototype.get_class(this.class_name)
+                .assignments;
         },
     },
 };

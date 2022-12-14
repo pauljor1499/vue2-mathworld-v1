@@ -3,6 +3,7 @@ export let Classes = [
         id: 0,
         title: "Algebra",
         code: "MWC-XYZ-1",
+        class_schedule: "TTH (9:00am-10:00am)",
         description: "Algebra Description 11",
         assignments: [
             {
@@ -73,7 +74,18 @@ export let Classes = [
             },
         ],
 
-        grades: {},
+        grades: [
+            {
+                my_grade: 90,
+                min_grade: 75,
+                first_quartile: 84,
+                median_grade: 87,
+                third_quartile: 91,
+                max_grade: 95,
+                class_average: 84.56,
+                total_students: 128,
+            },
+        ],
 
         class_details: {
             teacher: {
@@ -92,6 +104,7 @@ export let Classes = [
         id: 1,
         title: "Fractions",
         code: "MWC-XYZ-2",
+        class_schedule: "MWF (9:00am-10:00am)",
         description: "Algebra Description",
     },
 
@@ -99,6 +112,7 @@ export let Classes = [
         id: 2,
         title: "Polybomial",
         code: "MWC-XYZ-3",
+        class_schedule: "TTH (9:00am-10:00am)",
         description: "Algebra Description",
     },
 
@@ -106,6 +120,7 @@ export let Classes = [
         id: 3,
         title: "Precalculus",
         code: "MWC-XYZ-4",
+        class_schedule: "MWF (9:00am-10:00am)",
         description: "Algebra Description",
     },
 ];
