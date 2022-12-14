@@ -46,7 +46,7 @@
                                     </span>
                                 </div>
                                 <div class="date">
-                                    <span> Fall, 2022 </span>
+                                    <span> {{ item.season }} </span>
                                     <span> {{ item.date_submitted }} </span>
                                 </div>
                             </div>

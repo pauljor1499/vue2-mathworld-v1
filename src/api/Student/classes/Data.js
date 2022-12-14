@@ -78,6 +78,7 @@ export let Classes = [
             {
                 test_title: "Test 1 for MathWorld Class",
                 date_submitted: "January 18, 2022",
+                season: "Fall, 2022",
                 grades: [
                     {
                         my_grade: 90,
@@ -95,6 +96,7 @@ export let Classes = [
             {
                 test_title: "Test 2 for MathWorld Class",
                 date_submitted: "March 18, 2022",
+                season: "Fall, 2022",
                 grades: [
                     {
                         my_grade: 90,
@@ -112,6 +114,7 @@ export let Classes = [
             {
                 test_title: "Test 3 for MathWorld Class",
                 date_submitted: "September 18, 2022",
+                season: "Fall, 2022",
                 grades: [
                     {
                         my_grade: 90,
