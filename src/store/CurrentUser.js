@@ -16,7 +16,7 @@ export const storeCurrentUser = defineStore("storeCurrentUser", {
                     email: "",
                     password: "",
                 },
-                school: "",
+                school: "University of Mathworld",
                 office: {
                     location: "",
                     free_time: "",

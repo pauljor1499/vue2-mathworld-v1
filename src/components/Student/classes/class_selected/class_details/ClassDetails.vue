@@ -1,8 +1,8 @@
 <template>
     <div class="class-details-content">
         <div class="content-title">
-            <span> Algebra </span>
-            <h1>Multi-step Equations and Inequalities</h1>
+            <span> {{ get_class.title }} </span>
+            <h1>{{ get_class.description }}</h1>
         </div>
         <br />
         <br />
@@ -15,28 +15,46 @@
                 />
                 <div class="teacher-details">
                     Teacher
-                    <span>Jordan Williams</span>
+                    <span>{{ class_details.teacher.name }}</span>
                 </div>
             </div>
             <v-divider vertical />
             <div class="details-time">
                 <div class="time-details">
                     Time
-                    <span>9:00 am - 10:00 am</span>
+                    <span>{{ class_details.time.description }}</span>
                 </div>
             </div>
             <v-divider vertical />
             <div class="details-day">
                 <div class="day-details">
                     Day
-                    <span>Monday, Wednesday, Friday</span>
+                    <span>{{ class_details.day.description }}</span>
                 </div>
             </div>
         </div>
         <v-divider />
     </div>
 </template>
+<script>
+import { AllClassesService } from "@/api/Student/classes/Service";
 
+export default {
+    props: {
+        className: String,
+    },
+
+    computed: {
+        class_details() {
+            return AllClassesService.prototype.get_class(this.className)
+                .class_details;
+        },
+        get_class() {
+            return AllClassesService.prototype.get_class(this.className);
+        },
+    },
+};
+</script>
 <style scoped>
 .class-details-content {
     width: 100%;

@@ -26,16 +26,16 @@
             <br />
             <v-tabs-items v-model="tab">
                 <v-tab-item>
-                    <Assignments :class_name="this.class_name" />
+                    <Assignments :className="this.class_name" />
                 </v-tab-item>
                 <v-tab-item>
-                    <ClassRoster />
+                    <ClassRoster :className="this.class_name" />
                 </v-tab-item>
                 <v-tab-item>
-                    <Grades />
+                    <Grades :className="this.class_name" />
                 </v-tab-item>
                 <v-tab-item>
-                    <ClassDetails />
+                    <ClassDetails :className="this.class_name" />
                 </v-tab-item>
             </v-tabs-items>
         </div>

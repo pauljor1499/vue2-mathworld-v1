@@ -4,7 +4,7 @@ export let Classes = [
         title: "Algebra",
         code: "MWC-XYZ-1",
         class_schedule: "TTH (9:00am-10:00am)",
-        description: "Algebra Description 11",
+        description: "Multi-step Equations and Inequalities",
         assignments: [
             {
                 id: 0,
@@ -61,7 +61,7 @@ export let Classes = [
             {
                 id: 3,
                 photo: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
-                first_name: "Cedric Moran",
+                first_name: "Cedric",
                 middle_name: "",
                 last_name: "Moran",
             },
@@ -74,16 +74,56 @@ export let Classes = [
             },
         ],
 
-        grades: [
+        tests: [
             {
-                my_grade: 90,
-                min_grade: 75,
-                first_quartile: 84,
-                median_grade: 87,
-                third_quartile: 91,
-                max_grade: 95,
-                class_average: 84.56,
-                total_students: 128,
+                test_title: "Test 1 for MathWorld Class",
+                date_submitted: "January 18, 2022",
+                grades: [
+                    {
+                        my_grade: 90,
+                        min_grade: 75,
+                        first_quartile: 84,
+                        median_grade: 87,
+                        third_quartile: 91,
+                        max_grade: 95,
+                        class_average: 84.56,
+                        total_students: 128,
+                    },
+                ],
+            },
+
+            {
+                test_title: "Test 2 for MathWorld Class",
+                date_submitted: "March 18, 2022",
+                grades: [
+                    {
+                        my_grade: 90,
+                        min_grade: 75,
+                        first_quartile: 84,
+                        median_grade: 87,
+                        third_quartile: 91,
+                        max_grade: 95,
+                        class_average: 84.56,
+                        total_students: 128,
+                    },
+                ],
+            },
+
+            {
+                test_title: "Test 3 for MathWorld Class",
+                date_submitted: "September 18, 2022",
+                grades: [
+                    {
+                        my_grade: 90,
+                        min_grade: 75,
+                        first_quartile: 84,
+                        median_grade: 87,
+                        third_quartile: 91,
+                        max_grade: 95,
+                        class_average: 84.56,
+                        total_students: 128,
+                    },
+                ],
             },
         ],
 
@@ -105,7 +145,7 @@ export let Classes = [
         title: "Fractions",
         code: "MWC-XYZ-2",
         class_schedule: "MWF (9:00am-10:00am)",
-        description: "Algebra Description",
+        description: "Multi-step Equations and Inequalities",
     },
 
     {
@@ -113,7 +153,7 @@ export let Classes = [
         title: "Polybomial",
         code: "MWC-XYZ-3",
         class_schedule: "TTH (9:00am-10:00am)",
-        description: "Algebra Description",
+        description: "Multi-step Equations and Inequalities",
     },
 
     {
@@ -121,6 +161,6 @@ export let Classes = [
         title: "Precalculus",
         code: "MWC-XYZ-4",
         class_schedule: "MWF (9:00am-10:00am)",
-        description: "Algebra Description",
+        description: "Multi-step Equations and Inequalities",
     },
 ];

@@ -13,7 +13,7 @@
             <v-card
                 class="card"
                 hover
-                v-for="(item, index) in filter_results"
+                v-for="(item, index) in this.filter_results"
                 :key="index"
             >
                 <v-card-text class="card-content">
@@ -73,7 +73,7 @@ import { AllClassesService } from "@/api/Student/classes/Service";
 
 export default {
     props: {
-        class_name: String,
+        className: String,
     },
 
     data() {
@@ -86,13 +86,14 @@ export default {
     computed: {
         filter_results() {
             var arr = [];
-            for (var index in this.assignments()) {
-                if (this.assignments()[index].status === this.filter_text) {
-                    arr.push(this.assignments()[index]);
+            var assignments = this.assignments();
+            assignments.forEach((element) => {
+                if (element.status === this.filter_text) {
+                    arr.push(element);
                 }
-            }
+            });
             if (this.filter_text === "All") {
-                return this.assignments();
+                return assignments;
             }
             return arr;
         },
@@ -100,7 +101,7 @@ export default {
 
     methods: {
         assignments() {
-            return AllClassesService.prototype.get_class(this.class_name)
+            return AllClassesService.prototype.get_class(this.className)
                 .assignments;
         },
     },

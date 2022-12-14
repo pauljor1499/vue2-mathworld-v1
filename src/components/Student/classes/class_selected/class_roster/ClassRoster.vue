@@ -3,12 +3,12 @@
         <div class="content-title" style="color: var(--blue-1)">
             <h2>All Students</h2>
             <div>
-                {{ people.length + " students" }}
+                {{ class_roster.length + " students" }}
             </div>
         </div>
         <br />
         <br />
-        <v-list v-for="(item, index) in people" :key="index" dense>
+        <v-list dense v-for="(item, index) in class_roster" :key="index">
             <v-list-item :key="index">
                 <v-list-item-avatar>
                     <v-img :src="item.photo" />
@@ -16,12 +16,18 @@
                 <v-list-item-content>
                     <v-list-item-title>
                         <span>
-                            {{ item.name }}
+                            {{
+                                item.first_name +
+                                " " +
+                                item.middle_name +
+                                " " +
+                                item.last_name
+                            }}
                         </span>
                     </v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
-            <v-divider class="mt-3" v-if="index < people.length - 1" />
+            <v-divider class="mt-3" v-if="index < class_roster.length - 1" />
         </v-list>
     </div>
 </template>
@@ -31,61 +37,15 @@ import { AllClassesService } from "@/api/Student/classes/Service";
 
 export default {
     props: {
-        class_name: String,
+        className: String,
     },
 
-    data: () => ({
-        people: [
-            {
-                photo: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-                name: "Daniel Hopkins",
-            },
-
-            {
-                photo: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
-                name: "Matthew Harris",
-            },
-
-            {
-                photo: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
-                name: "Aiden Sharp",
-            },
-
-            {
-                photo: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
-                name: "Isaac Burns",
-            },
-
-            {
-                photo: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
-                name: "Thomas Brooks",
-            },
-
-            {
-                photo: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
-                name: "Cedric Moran",
-            },
-
-            {
-                photo: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
-                name: "Isai Page",
-            },
-
-            {
-                photo: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
-                name: "Francisco Daniel",
-            },
-        ],
-        computed: {
-            get_class() {
-                return AllClassesService.prototype.get_class(this.class_name);
-            },
+    computed: {
+        class_roster() {
+            return AllClassesService.prototype.get_class(this.className)
+                .class_roster;
         },
-
-        created() {
-            console.log(this.class_name);
-        },
-    }),
+    },
 };
 </script>
 

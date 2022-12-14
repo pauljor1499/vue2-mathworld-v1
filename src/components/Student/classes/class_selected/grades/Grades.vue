@@ -1,15 +1,20 @@
 <template>
     <div class="grades-content">
         <v-expansion-panels focusable popout>
-            <v-expansion-panel v-for="(item, i) in 5" :key="i">
+            <v-expansion-panel
+                v-for="(item, index) in class_grades"
+                :key="index"
+            >
                 <v-expansion-panel-header expand-icon="mdi-menu-down">
                     <template v-slot:default="{ open }">
                         <span class="item-title" v-if="!open">
-                            Test 1 for MathWorld Class
+                            {{ item.test_title }}
                         </span>
                         <div class="item-header" v-if="!open">
-                            <span> Date submitted: Sept 12, 2022 </span>
-                            <span> Grade: 90 </span>
+                            <span> {{ item.date_submitted }} </span>
+                            <span>
+                                {{ "My Grade: " + item.grades[0].my_grade }}
+                            </span>
                         </div>
                     </template>
                 </v-expansion-panel-header>
@@ -21,26 +26,44 @@
                         <div class="content-header">
                             <div class="header-top">
                                 <div class="student">
-                                    <span>Juan Dela Cruz</span>
-                                    <span>University of the World</span>
+                                    <span>
+                                        {{
+                                            store.current_user.credentials.name
+                                                .first_name +
+                                            " " +
+                                            store.current_user.credentials.name
+                                                .middle_name +
+                                            " " +
+                                            store.current_user.credentials.name
+                                                .last_name
+                                        }}
+                                    </span>
+                                    <span>
+                                        {{
+                                            store.current_user.credentials
+                                                .school
+                                        }}
+                                    </span>
                                 </div>
                                 <div class="date">
                                     <span> Fall, 2022 </span>
-                                    <span> September 12, 2022 </span>
+                                    <span> {{ item.date_submitted }} </span>
                                 </div>
                             </div>
                             <div class="header-bottom">
                                 <span class="bottom-title">
-                                    Test 1 for MathWorld Class
+                                    {{ item.test_title }}
                                 </span>
-                                <span class="bottom-subtitle">Math101</span>
+                                <span class="bottom-subtitle"
+                                    >{{ get_class.title }}
+                                </span>
                             </div>
                         </div>
                         <br />
                         <v-data-table
                             hide-default-footer
                             :headers="headers"
-                            :items="grades"
+                            :items="item.grades"
                             item-key="name"
                             class="elevation-1"
                         >
@@ -53,8 +76,16 @@
 </template>
 
 <script>
+import { AllClassesService } from "@/api/Student/classes/Service";
+import { storeCurrentUser } from "@/store/CurrentUser";
+
 export default {
+    props: {
+        className: String,
+    },
     data: () => ({
+        store: storeCurrentUser(),
+
         headers: [
             {
                 text: "My Grade",
@@ -105,20 +136,17 @@ export default {
                 value: "total_students",
             },
         ],
-
-        grades: [
-            {
-                my_grade: 90,
-                min_grade: 75,
-                first_quartile: 84,
-                median_grade: 87,
-                third_quartile: 91,
-                max_grade: 95,
-                class_average: 84.56,
-                total_students: 128,
-            },
-        ],
     }),
+
+    computed: {
+        class_grades() {
+            return AllClassesService.prototype.get_class(this.className).tests;
+        },
+
+        get_class() {
+            return AllClassesService.prototype.get_class(this.className);
+        },
+    },
 };
 </script>
 
